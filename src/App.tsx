@@ -989,7 +989,8 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [projects, setProjects] = useState<Project[]>([]);
   const [services, setServices] = useState<Service[]>([]);
-
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [adminPassword, setAdminPassword] = useState("");
   useEffect(() => {
     fetch('/api/projects').then(res => res.json()).then(setProjects);
     fetch('/api/services').then(res => res.json()).then(setServices);
@@ -1024,17 +1025,56 @@ export default function App() {
           </div>
         )}
 
-        {activeTab === 'admin' && (
-          <div className="relative">
-            <button 
-              onClick={() => setActiveTab('home')}
-              className="fixed top-4 left-4 z-[60] bg-white p-2 rounded-full shadow-lg border border-slate-200 hover:bg-slate-50"
-            >
-              <ArrowRight className="rotate-180 w-5 h-5" />
-            </button>
-            <AdminDashboard />
-          </div>
-        )}
+       {activeTab === 'admin' && (
+  <div className="relative">
+
+    {!isLoggedIn ? (
+      <div className="flex items-center justify-center min-h-screen bg-slate-100">
+        <div className="bg-white p-6 rounded-xl shadow-lg w-80">
+          <h2 className="text-xl font-semibold mb-4 text-center">
+            Login Admin
+          </h2>
+
+          <input
+            type="password"
+            placeholder="Masukkan Password"
+            value={adminPassword}
+            onChange={(e) => setAdminPassword(e.target.value)}
+            className="w-full p-2 border rounded mb-4"
+          />
+
+          <button
+            onClick={() => {
+              if (adminPassword === "srikarya") {
+                setIsLoggedIn(true);
+              } else {
+                alert("Password salah!");
+              }
+            }}
+            className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        <button 
+          onClick={() => {
+            setActiveTab('home');
+            setIsLoggedIn(false);
+          }}
+          className="fixed top-4 left-4 z-[60] bg-white p-2 rounded-full shadow-lg border border-slate-200 hover:bg-slate-50"
+        >
+          <ArrowRight className="rotate-180 w-5 h-5" />
+        </button>
+
+        <AdminDashboard />
+      </>
+    )}
+
+  </div>
+)}
       </main>
 
       {activeTab !== 'admin' && (
