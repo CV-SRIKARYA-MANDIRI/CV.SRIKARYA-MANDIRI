@@ -991,6 +991,12 @@ export default function App() {
   const [services, setServices] = useState<Service[]>([]);
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [adminPassword, setAdminPassword] = useState("");
+ useEffect(() => {
+  if (activeTab !== 'admin') {
+    setIsLoggedIn(false);
+    setAdminPassword("");
+  }
+}, [activeTab]);
   useEffect(() => {
     fetch('/api/projects').then(res => res.json()).then(setProjects);
     fetch('/api/services').then(res => res.json()).then(setServices);
