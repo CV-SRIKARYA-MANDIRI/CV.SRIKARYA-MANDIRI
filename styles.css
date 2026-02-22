@@ -1,0 +1,1311 @@
+/* 
+  CV Srikarya Mandiri - Stylesheet
+  Themes: 
+  - Green: #127541
+  - Orange: #f48024
+  - Light/Cream Backgrounds
+*/
+
+:root {
+    --color-primary: #127541;
+    /* Dark Green */
+    --color-primary-light: #1e9b58;
+    --color-primary-dark: #0c522d;
+    --color-secondary: #f48024;
+    /* Orange */
+    --color-secondary-light: #f79c53;
+    --color-secondary-dark: #d8680b;
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-background: #ffffff;
+    --color-background-alt: #f9fbf9;
+    --color-white: #ffffff;
+
+    --font-main: 'Outfit', sans-serif;
+
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 40px;
+    --border-radius-full: 9999px;
+
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* =========================================
+   Base & Reset
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* =========================================
+   Typography
+========================================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-title.text-center {
+    text-align: center;
+}
+
+.section-title-left {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.section-title-left::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-secondary);
+    border-radius: 2px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.txt-white {
+    color: var(--color-white) !important;
+}
+
+.txt-white.section-title-left::after {
+    background-color: var(--color-white);
+}
+
+/* =========================================
+   Layout & Utilities
+========================================= */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.section-padding {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.bg-light {
+    background-color: var(--color-background-alt);
+    background-image: radial-gradient(var(--color-primary-light) 0.5px, transparent 0.5px);
+    background-size: 30px 30px;
+    background-position: 0 0;
+    /* Opacity effect for the pattern */
+    background-color: rgba(249, 251, 249, 0.95);
+    background-blend-mode: overlay;
+}
+
+.base-green-bg {
+    background-color: var(--color-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.base-green-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(244, 128, 36, 0.2) 0%, rgba(18, 117, 65, 0) 70%);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* =========================================
+   Buttons
+========================================= */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-full);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline-white {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn-outline-white:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   Navbar
+========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    padding: 1rem 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+/* =========================================
+   Hero Section
+========================================= */
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    transform: scale(1.05);
+    /* Slight zoom for parallax effect */
+    animation: slowZoom 20s infinite alternate linear;
+}
+
+@keyframes slowZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.1) 100%);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+.hero-text-box {
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: var(--border-radius-lg);
+    border-top-left-radius: 0;
+    box-shadow: var(--shadow-lg);
+    border-left: 5px solid var(--color-primary);
+    animation: slideInUp 1s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+    border-radius: var(--border-radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.hero-title span {
+    color: var(--color-primary);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+/* =========================================
+   Daftar Isi Section (Menu List)
+========================================= */
+.daftar-isi {
+    background-color: var(--color-white);
+    position: relative;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1.5rem 3rem;
+    border-radius: var(--border-radius-full);
+    font-size: 1.4rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border-left: 10px solid var(--color-secondary);
+}
+
+.menu-item:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-md);
+    background-color: var(--color-primary-dark);
+}
+
+.menu-number {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--color-secondary-light);
+}
+
+/* =========================================
+   Tentang Kami Section
+========================================= */
+.about-images {
+    position: relative;
+}
+
+.image-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secondary);
+    z-index: -1;
+    border-radius: var(--border-radius-lg);
+    top: 20px;
+    left: -20px;
+}
+
+.rounded-img {
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 10px solid var(--color-white);
+    width: 100%;
+}
+
+.text-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    text-align: justify;
+}
+
+/* =========================================
+   Alasan Tepat Memilih Kami
+========================================= */
+.alasan-memilih {
+    background-color: var(--color-white);
+    display: none;
+    /* Hidden conceptually, replaced by Kenapa Harus Kami Baru */
+}
+
+/* =========================================
+   Cakupan Layanan Kami (Old)
+========================================= */
+.layanan {
+    display: none;
+    /* Hidden, replaced by Layanan Baru */
+}
+
+/* =========================================
+   Company Info Section
+========================================= */
+.company-info {
+    background-color: var(--color-white);
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info-item {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.info-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+}
+
+.info-label {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.2rem;
+}
+
+.info-value {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
+
+.circle-border {
+    position: relative;
+    padding: 15px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+}
+
+.rounded-circle-img {
+    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 5px solid var(--color-white);
+}
+
+/* =========================================
+   Visi & Misi
+========================================= */
+.align-start {
+    align-items: flex-start;
+}
+
+.vm-box {
+    background-color: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    border-top: 5px solid var(--color-primary);
+    height: 100%;
+    transition: var(--transition);
+}
+
+.vm-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.vm-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-background-alt);
+    border: 2px solid var(--color-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.vm-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+}
+
+.misi-list {
+    list-style-type: none;
+}
+
+.misi-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--color-text-light);
+}
+
+.misi-list li::before {
+    content: "•";
+    color: var(--color-secondary);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+
+/* =========================================
+   Kenapa Harus Kami & Header Layanan (Teardrop Style)
+========================================= */
+.kenapa-harus-kami {
+    background-color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.layanan-baru {
+    position: relative;
+}
+
+.grid-2-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.title-two-tone {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.dark-green {
+    color: var(--color-primary-dark);
+}
+
+.light-green {
+    color: var(--color-primary-light);
+}
+
+.teardrop-shape {
+    width: 300px;
+    height: 300px;
+    background-color: transparent;
+    border: 25px solid var(--color-primary);
+    border-radius: 50% 50% 0 50%;
+    transform: rotate(45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+}
+
+.small-teardrop {
+    width: 200px;
+    height: 200px;
+    border-width: 15px;
+}
+
+.teardrop-inner {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    background-color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-45deg);
+    box-shadow: inset var(--shadow-sm);
+}
+
+.logo-large {
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.small-teardrop .logo-large {
+    font-size: 3.5rem;
+}
+
+.orange-text {
+    color: var(--color-secondary);
+}
+
+/* =========================================
+   Cakupan Layanan Kami (8 Alternating Cards)
+========================================= */
+.cakupan-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cakupan-card {
+    display: flex;
+    align-items: stretch;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    min-height: 200px;
+}
+
+.cakupan-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+}
+
+.cakupan-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.circle-overlap {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.left-circle {
+    left: -45px;
+}
+
+.right-circle {
+    right: -45px;
+}
+
+.cakupan-content {
+    flex: 1;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left-content {
+    text-align: left;
+}
+
+.right-content {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.cakupan-title {
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.cakupan-bullets {
+    list-style: none;
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    display: inline-block;
+}
+
+.cakupan-bullets li {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.left-bullets li {
+    padding-left: 1.5rem;
+}
+
+.left-bullets li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    line-height: 1;
+    top: -2px;
+}
+
+.right-bullets li {
+    padding-right: 1.5rem;
+}
+
+.right-bullets li::before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    line-height: 1;
+    top: -2px;
+}
+
+.cakupan-image-wrapper {
+    flex: 0 0 45%;
+    position: relative;
+}
+
+.cakupan-card:not(.reverse) .cakupan-image-wrapper {
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    overflow: hidden;
+    border-left: 2px solid var(--color-primary);
+}
+
+.cakupan-card.reverse .cakupan-image-wrapper {
+    border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+    overflow: hidden;
+    border-right: 2px solid var(--color-primary);
+}
+
+.cakupan-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Dual Images Support for Mechanical Section */
+.cakupan-image-dual {
+    display: flex;
+    flex-direction: row;
+}
+
+.cakupan-card.reverse .cakupan-image-dual img:first-child {
+    border-right: 2px solid var(--color-white);
+}
+
+.cakupan-card:not(.reverse) .cakupan-image-dual img:first-child {
+    border-right: 2px solid var(--color-white);
+}
+
+.cakupan-image-dual img {
+    position: static;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================
+   Contact / CTA
+========================================= */
+.cta-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* =========================================
+   Contact Form Styles
+========================================= */
+.contact-form-wrapper {
+    background-color: var(--color-white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text);
+    text-align: left;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: var(--color-background-alt);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(28, 120, 73, 0.1);
+}
+
+.contact-form .btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+    border: none;
+}
+
+.contact-info {
+    text-align: left;
+}
+
+/* =========================================
+   Footer
+========================================= */
+.footer {
+    background-color: #0a3d24;
+    /* Very dark green */
+    color: var(--color-white);
+    padding: 3rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo-img {
+    height: 60px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.footer-logo h4 {
+    color: var(--color-white);
+    margin-bottom: 0.2rem;
+}
+
+.footer-logo p {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-copyright {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   Decorative Shapes & Ornaments (Based on the Figma/Images)
+========================================= */
+.shape {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Hero shapes */
+.shape-corner-top-right {
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background-color: var(--color-secondary);
+    border-radius: 40px;
+    transform: rotate(45deg);
+    opacity: 0.9;
+}
+
+.shape-dots-bottom-right {
+    bottom: 50px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(var(--color-primary) 3px, transparent 3px);
+    background-size: 15px 15px;
+}
+
+/* Daftar Isi Shapes */
+.shape-circle-orange-top-left {
+    top: -30px;
+    left: 5%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+}
+
+.shape-dots-green-top-right {
+    top: 20px;
+    right: 5%;
+    width: 80px;
+    height: 120px;
+    background-image: radial-gradient(var(--color-primary) 4px, transparent 4px);
+    background-size: 20px 20px;
+}
+
+/* Company Info Shapes */
+.shape-stripes-top-left {
+    top: -20px;
+    left: -20px;
+    width: 150px;
+    height: 150px;
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(244, 128, 36, 0.2) 10px,
+            rgba(244, 128, 36, 0.2) 20px);
+    border-radius: 50%;
+}
+
+/* =========================================
+   K3 HSE Section
+========================================= */
+.k3-section {
+    background-color: #f4f6f5;
+    /* Subtle very light grey-green to distinguish */
+    position: relative;
+    overflow: hidden;
+}
+
+.k3-content-box {
+    background: var(--color-white);
+    border: 3px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
+    padding: 2.5rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.k3-subtitle {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.k3-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.k3-list li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.k3-list li::before {
+    content: '•';
+    color: var(--color-primary);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.k3-images-container {
+    position: relative;
+    height: 100%;
+    min-height: 450px;
+}
+
+.k3-img-1 {
+    width: 65%;
+    border-radius: var(--border-radius-md);
+    border: 6px solid var(--color-white);
+    box-shadow: var(--shadow-md);
+    position: absolute;
+    top: 5vmin;
+    right: 0;
+    z-index: 1;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+.k3-img-2 {
+    width: 75%;
+    border-radius: var(--border-radius-md);
+    border: 6px solid var(--color-white);
+    box-shadow: var(--shadow-lg);
+    position: absolute;
+    bottom: 5vmin;
+    left: 0;
+    z-index: 2;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+/* =========================================
+   Media Queries (Responsive)
+========================================= */
+@media (max-width: 992px) {
+    .k3-images-container {
+        min-height: 350px;
+        margin-top: 2rem;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .reverse-mobile {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-2-custom {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .title-two-tone {
+        font-size: 2.8rem;
+    }
+
+    .teardrop-shape {
+        margin: 2rem auto;
+    }
+
+    .cakupan-card {
+        flex-direction: column;
+    }
+
+    .cakupan-card.reverse {
+        flex-direction: column;
+    }
+
+    .cakupan-image-wrapper {
+        min-height: 200px;
+        flex: auto;
+    }
+
+    .cakupan-card:not(.reverse) .cakupan-image-wrapper,
+    .cakupan-card.reverse .cakupan-image-wrapper {
+        border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2px solid var(--color-primary);
+    }
+
+    .circle-overlap {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .left-circle,
+    .right-circle {
+        left: 50%;
+        right: auto;
+    }
+
+    .left-content,
+    .right-content {
+        text-align: center;
+        align-items: center;
+        padding: 2rem 1rem;
+    }
+
+    .left-bullets li {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .right-bullets li {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .left-bullets li::before,
+    .right-bullets li::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-white);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: var(--shadow-md);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease-in-out;
+    }
+
+    .nav-links.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .hero-text-box {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+
+    .menu-item {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .menu-number {
+        font-size: 1.5rem;
+    }
+
+
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,11 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.log
+*.tmp
+
+# Browser artifacts might be in parent but good to include just in case
+.gemini/
+brain/
